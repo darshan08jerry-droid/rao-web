@@ -1,0 +1,436 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --n:#0b1929;--n2:#112236;--n3:#1a3352;
+  --g:#b8860b;--gl:#d4a017;--gll:#f0c040;--gp:#fdf8ec;
+  --w:#ffffff;--f:#f7f8fa;--t:#1c2b3a;--m:#6b7a8d;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Outfit',sans-serif;
+  --r8:8px;--r12:12px;--r16:16px;
+}
+body{font-family:var(--sans);background:#fff;color:var(--t)}
+
+/* THEME SWITCHER */
+.theme-bar{background:var(--f);border-bottom:1px solid #e5e8ed;padding:12px 48px;display:flex;align-items:center;gap:10px}
+.theme-label{font-size:11px;color:var(--m);letter-spacing:1px;text-transform:uppercase;font-weight:500}
+.theme-btn{padding:6px 16px;border-radius:20px;border:1.5px solid #dce0e8;background:#fff;font-size:11px;font-family:var(--sans);cursor:pointer;color:var(--t);font-weight:500;transition:all 0.2s}
+.theme-btn.active{background:var(--n);color:#fff;border-color:var(--n)}
+
+/* NAV */
+nav{background:var(--n);height:72px;padding:0 48px;display:flex;align-items:center;justify-content:space-between;position:relative}
+nav::after{content:'';position:absolute;bottom:0;left:48px;right:48px;height:1px;background:linear-gradient(90deg,transparent,rgba(184,134,11,0.6),transparent)}
+.logo-wrap{display:flex;align-items:center;gap:12px}
+.logo-mark{width:40px;height:40px;border:1.5px solid var(--g);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:3px}
+.logo-mark span{display:block;width:18px;height:1.5px;background:var(--gl)}
+.logo-mark span:nth-child(2){width:12px}
+.brand-name{font-family:var(--serif);color:#fff;font-size:18px;font-weight:600;letter-spacing:0.3px;line-height:1}
+.brand-sub{font-family:var(--sans);font-size:9px;color:rgba(255,255,255,0.38);letter-spacing:2.5px;text-transform:uppercase;margin-top:3px}
+.nav-menu{display:flex;gap:32px}
+.nav-menu a{color:rgba(255,255,255,0.6);font-size:12.5px;text-decoration:none;letter-spacing:0.4px;transition:color 0.2s;font-weight:400}
+.nav-menu a:hover{color:#fff}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.btn-nav-ghost{background:transparent;border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.7);font-size:12px;padding:8px 18px;border-radius:var(--r8);cursor:pointer;font-family:var(--sans);transition:all 0.2s}
+.btn-nav-ghost:hover{border-color:rgba(255,255,255,0.45);color:#fff}
+.btn-nav-gold{background:var(--g);border:none;color:var(--n);font-size:12px;font-weight:600;padding:8px 20px;border-radius:var(--r8);cursor:pointer;font-family:var(--sans);letter-spacing:0.3px;transition:all 0.2s}
+.btn-nav-gold:hover{background:var(--gl)}
+
+/* HERO */
+.hero{background:var(--n);padding:88px 48px 80px;position:relative;overflow:hidden}
+.hero-geo{position:absolute;right:-60px;top:-60px;width:420px;height:420px;border:1px solid rgba(184,134,11,0.12);border-radius:50%}
+.hero-geo2{position:absolute;right:20px;top:20px;width:260px;height:260px;border:1px solid rgba(184,134,11,0.08);border-radius:50%}
+.hero-geo3{position:absolute;right:80px;top:80px;width:140px;height:140px;border:1px solid rgba(184,134,11,0.06);border-radius:50%}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:64px 64px}
+.hero-inner{position:relative;z-index:2;max-width:620px}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(184,134,11,0.35);background:rgba(184,134,11,0.08);padding:6px 16px;border-radius:24px;margin-bottom:32px}
+.hero-pill-dot{width:7px;height:7px;border-radius:50%;background:var(--gl)}
+.hero-pill span{font-size:11px;color:var(--gll);letter-spacing:1.5px;text-transform:uppercase;font-weight:500}
+.hero h1{font-family:var(--serif);color:#fff;font-size:52px;font-weight:600;line-height:1.15;margin-bottom:24px}
+.hero h1 em{color:var(--gll);font-style:italic}
+.hero-desc{color:rgba(255,255,255,0.52);font-size:15px;line-height:1.8;margin-bottom:40px;max-width:480px}
+.hero-btns{display:flex;gap:14px;align-items:center;margin-bottom:56px}
+.btn-hero{background:var(--g);color:var(--n);font-size:13px;font-weight:600;padding:14px 30px;border:none;border-radius:var(--r8);cursor:pointer;font-family:var(--sans);letter-spacing:0.3px;transition:background 0.2s}
+.btn-hero:hover{background:var(--gl)}
+.btn-hero-ghost{background:transparent;color:rgba(255,255,255,0.65);font-size:13px;padding:13px 28px;border:1px solid rgba(255,255,255,0.18);border-radius:var(--r8);cursor:pointer;font-family:var(--sans);transition:all 0.2s}
+.btn-hero-ghost:hover{border-color:rgba(255,255,255,0.45);color:#fff}
+.hero-stats{display:flex;gap:48px}
+.hero-stat-val{font-family:var(--serif);color:#fff;font-size:30px;font-weight:600;line-height:1}
+.hero-stat-val sup{font-size:16px;color:var(--gl)}
+.hero-stat-lbl{font-size:11px;color:rgba(255,255,255,0.38);letter-spacing:0.5px;margin-top:4px}
+.hero-stat-div{width:1px;background:rgba(255,255,255,0.1);align-self:stretch}
+
+/* TRUST */
+.trust{background:var(--g);padding:16px 48px;display:flex;gap:0;overflow:hidden}
+.trust-item{display:flex;align-items:center;gap:10px;padding:0 32px;flex-shrink:0}
+.trust-item:first-child{padding-left:0}
+.trust-item+.trust-item{border-left:1px solid rgba(11,25,41,0.2)}
+.trust-chk{width:18px;height:18px;border-radius:50%;background:var(--n);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.trust-chk::after{content:'';display:block;width:5px;height:9px;border-right:1.5px solid #fff;border-bottom:1.5px solid #fff;transform:rotate(45deg) translate(-1px,-1px)}
+.trust-item span{font-size:12px;font-weight:600;color:var(--n);letter-spacing:0.3px;white-space:nowrap}
+
+/* SERVICES */
+.services{padding:96px 48px}
+.sec-head{margin-bottom:56px}
+.eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.eyebrow-bar{width:36px;height:2px;background:var(--g)}
+.eyebrow span{font-size:11px;color:var(--g);letter-spacing:2.5px;text-transform:uppercase;font-weight:600}
+.sec-title{font-family:var(--serif);font-size:38px;font-weight:600;color:var(--n);line-height:1.2;margin-bottom:12px}
+.sec-desc{font-size:14px;color:var(--m);line-height:1.75;max-width:460px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.svc{border:1px solid #e8eaef;border-radius:var(--r16);padding:32px 28px;position:relative;overflow:hidden;transition:all 0.3s;cursor:default;background:#fff}
+.svc::after{content:'';position:absolute;inset:0;border-radius:var(--r16);border:2px solid var(--g);opacity:0;transition:opacity 0.3s}
+.svc:hover{border-color:transparent}
+.svc:hover::after{opacity:1}
+.svc:hover .svc-icon-bg{background:var(--n)}
+.svc:hover .svc-icon-bg svg{fill:var(--gll)}
+.svc-num{position:absolute;top:20px;right:24px;font-family:var(--serif);font-size:52px;font-weight:600;color:#f0f2f5;line-height:1;transition:color 0.3s}
+.svc:hover .svc-num{color:rgba(184,134,11,0.08)}
+.svc-icon-bg{width:48px;height:48px;border-radius:12px;background:var(--gp);display:flex;align-items:center;justify-content:center;margin-bottom:20px;transition:background 0.3s}
+.svc-icon-bg svg{width:22px;height:22px;fill:var(--g);transition:fill 0.3s}
+.svc h3{font-size:15px;font-weight:600;color:var(--n);margin-bottom:8px;letter-spacing:0.1px}
+.svc p{font-size:12.5px;color:var(--m);line-height:1.7}
+.svc-arrow{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--g);font-weight:600;margin-top:16px;letter-spacing:0.3px}
+.svc-arrow::after{content:'→';transition:transform 0.2s}
+.svc:hover .svc-arrow::after{transform:translateX(4px)}
+
+/* FEATURE SPLIT */
+.feature{background:var(--n);padding:96px 48px}
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.feat-visual{position:relative}
+.feat-card-main{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r16);padding:32px;margin-bottom:16px}
+.feat-card-main h3{font-family:var(--serif);color:#fff;font-size:24px;margin-bottom:8px}
+.feat-card-main p{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7}
+.feat-card-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.feat-mini{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:var(--r12);padding:20px;text-align:center}
+.feat-mini-num{font-family:var(--serif);font-size:26px;color:var(--gll);font-weight:600}
+.feat-mini-lbl{font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px;letter-spacing:0.3px}
+.feat-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(184,134,11,0.15);border:1px solid rgba(184,134,11,0.3);border-radius:24px;padding:5px 14px;margin-bottom:28px}
+.feat-badge span{font-size:11px;color:var(--gll);letter-spacing:1.5px;text-transform:uppercase;font-weight:500}
+.feat-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gl)}
+.feat-content .sec-title{color:#fff}
+.feat-content .sec-desc{color:rgba(255,255,255,0.48)}
+.feat-list{margin-top:32px;display:flex;flex-direction:column;gap:16px}
+.feat-item{display:flex;align-items:flex-start;gap:14px}
+.feat-check{width:22px;height:22px;border-radius:6px;background:rgba(184,134,11,0.15);border:1px solid rgba(184,134,11,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.feat-check::after{content:'';display:block;width:5px;height:9px;border-right:1.5px solid var(--gl);border-bottom:1.5px solid var(--gl);transform:rotate(45deg) translate(-1px,-1px)}
+.feat-item-text h4{font-size:13.5px;font-weight:600;color:#fff;margin-bottom:3px}
+.feat-item-text p{font-size:12px;color:rgba(255,255,255,0.42);line-height:1.6}
+
+/* PROCESS */
+.process{padding:96px 48px;background:var(--f)}
+.process-track{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:60px;position:relative}
+.process-line{position:absolute;top:36px;left:calc(12.5% + 24px);right:calc(12.5% + 24px);height:1px;background:repeating-linear-gradient(90deg,var(--g) 0,var(--g) 10px,transparent 10px,transparent 20px)}
+.pstep{text-align:center;padding:0 24px;position:relative;z-index:1}
+.pstep-circle{width:72px;height:72px;border-radius:50%;background:#fff;border:2px solid var(--g);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;box-shadow:0 0 0 6px var(--f)}
+.pstep-circle span{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--g)}
+.pstep h4{font-size:14px;font-weight:600;color:var(--n);margin-bottom:8px}
+.pstep p{font-size:12px;color:var(--m);line-height:1.7}
+
+/* TESTIMONIALS */
+.testimonials{padding:96px 48px}
+.test-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:56px}
+.test-card{border:1px solid #e8eaef;border-radius:var(--r16);padding:32px;position:relative;background:#fff}
+.test-quote{font-family:var(--serif);font-size:52px;color:var(--gp);line-height:0.8;margin-bottom:16px;font-weight:600}
+.test-text{font-size:13.5px;color:var(--t);line-height:1.75;margin-bottom:24px;font-style:italic}
+.test-author{display:flex;align-items:center;gap:12px;padding-top:20px;border-top:1px solid #eef0f4}
+.test-avatar{width:40px;height:40px;border-radius:50%;background:var(--n);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:14px;color:var(--gl);font-weight:600}
+.test-name{font-size:13px;font-weight:600;color:var(--n)}
+.test-role{font-size:11px;color:var(--m);margin-top:2px}
+.test-stars{display:flex;gap:2px;margin-bottom:14px}
+.star{width:12px;height:12px;background:var(--g);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+
+/* CTA */
+.cta-sec{padding:0 48px 96px}
+.cta-box{background:var(--n);border-radius:20px;padding:64px 60px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;position:relative;overflow:hidden}
+.cta-geo{position:absolute;right:-40px;top:-40px;width:280px;height:280px;border:1px solid rgba(184,134,11,0.1);border-radius:50%}
+.cta-geo2{position:absolute;right:40px;bottom:-60px;width:180px;height:180px;border:1px solid rgba(184,134,11,0.07);border-radius:50%}
+.cta-box h2{font-family:var(--serif);font-size:34px;color:#fff;font-weight:600;margin-bottom:12px;position:relative;z-index:1}
+.cta-box p{font-size:14px;color:rgba(255,255,255,0.48);line-height:1.75;position:relative;z-index:1}
+.cta-right{display:flex;flex-direction:column;gap:14px;align-items:stretch;position:relative;z-index:1;min-width:200px}
+.cta-phone-lbl{font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:2px;text-transform:uppercase;text-align:center}
+.cta-phone-num{font-family:var(--serif);font-size:22px;color:var(--gll);text-align:center;font-weight:600}
+.btn-cta{background:var(--g);color:var(--n);font-size:13px;font-weight:600;padding:14px 24px;border:none;border-radius:var(--r8);cursor:pointer;font-family:var(--sans);letter-spacing:0.3px;transition:background 0.2s;text-align:center}
+.btn-cta:hover{background:var(--gl)}
+.btn-cta-ghost{background:transparent;color:rgba(255,255,255,0.6);font-size:13px;padding:13px 24px;border:1px solid rgba(255,255,255,0.15);border-radius:var(--r8);cursor:pointer;font-family:var(--sans);transition:all 0.2s;text-align:center}
+.btn-cta-ghost:hover{border-color:rgba(255,255,255,0.4);color:#fff}
+
+/* FOOTER */
+footer{background:#060e19;padding:64px 48px 28px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:48px;margin-bottom:48px}
+.f-brand-name{font-family:var(--serif);color:#fff;font-size:20px;font-weight:600;margin-bottom:4px}
+.f-brand-sub{font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase}
+.f-desc{font-size:12.5px;color:rgba(255,255,255,0.3);line-height:1.85;margin-top:16px;max-width:200px}
+.f-certs{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}
+.f-cert{border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:5px 10px;font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:0.5px}
+.f-col-title{font-size:10px;color:var(--g);letter-spacing:2.5px;text-transform:uppercase;font-weight:600;margin-bottom:20px}
+.f-col a{display:block;font-size:12.5px;color:rgba(255,255,255,0.35);text-decoration:none;margin-bottom:10px;transition:color 0.2s;letter-spacing:0.2px}
+.f-col a:hover{color:rgba(255,255,255,0.8)}
+.f-contact-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px}
+.f-contact-icon{width:28px;height:28px;border-radius:6px;background:rgba(184,134,11,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.f-contact-icon svg{width:13px;height:13px;fill:var(--g)}
+.f-contact-text{font-size:12px;color:rgba(255,255,255,0.38);line-height:1.5}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.05);padding-top:24px;display:flex;justify-content:space-between;align-items:center}
+.f-copy{font-size:12px;color:rgba(255,255,255,0.18)}
+.f-links{display:flex;gap:20px}
+.f-links a{font-size:12px;color:rgba(255,255,255,0.2);text-decoration:none;transition:color 0.2s}
+.f-links a:hover{color:rgba(255,255,255,0.6)}
+
+/* THEME VARIANTS */
+body.theme-light{--n:#1a3352;--n2:#1e3d62;--g:#b8860b;--gl:#c8960b}
+body.theme-dark{--f:#111827}
+body.theme-green{--n:#0a2518;--n2:#0d3020;--g:#2d7a3a;--gl:#3a9e4a;--gll:#5ecf70;--gp:#edfaee;--gll:#6bdb80}
+body.theme-maroon{--n:#2a0a14;--n2:#3d1020;--g:#8b1a2e;--gl:#a81e36;--gll:#d44060;--gp:#fdf0f2}
+</style>
+
+<div class="theme-bar">
+  <span class="theme-label">Color Theme:</span>
+  <button class="theme-btn active" onclick="setTheme('')">Navy Gold</button>
+  <button class="theme-btn" onclick="setTheme('theme-green')">Forest Green</button>
+  <button class="theme-btn" onclick="setTheme('theme-maroon')">Deep Maroon</button>
+</div>
+
+<nav>
+  <div class="logo-wrap">
+    <div class="logo-mark"><span></span><span></span><span></span></div>
+    <div>
+      <div class="brand-name">Rao Associates</div>
+      <div class="brand-sub">Government Approved Valuers</div>
+    </div>
+  </div>
+  <div class="nav-menu">
+    <a href="#">Services</a>
+    <a href="#">About</a>
+    <a href="#">Sectors</a>
+    <a href="#">Process</a>
+    <a href="#">Contact</a>
+  </div>
+  <div class="nav-actions">
+    <button class="btn-nav-ghost">Download Brochure</button>
+    <button class="btn-nav-gold">Get a Valuation</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-geo"></div><div class="hero-geo2"></div><div class="hero-geo3"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-pill"><div class="hero-pill-dot"></div><span>25+ Years of Certified Excellence</span></div>
+    <h1>India's Most Trusted<br><em>Asset Valuation</em><br>Experts</h1>
+    <p class="hero-desc">Government-approved, bank-empanelled valuation reports for property, land, plant & machinery, and 12 more asset categories — delivered in 48 hours.</p>
+    <div class="hero-btns">
+      <button class="btn-hero">Request a Valuation</button>
+      <button class="btn-hero-ghost">View All Services</button>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hero-stat-val">25<sup>+</sup></div><div class="hero-stat-lbl">Years Active</div></div>
+      <div class="hero-stat-div"></div>
+      <div><div class="hero-stat-val">10K<sup>+</sup></div><div class="hero-stat-lbl">Reports Delivered</div></div>
+      <div class="hero-stat-div"></div>
+      <div><div class="hero-stat-val">50<sup>+</sup></div><div class="hero-stat-lbl">Banks Empanelled</div></div>
+      <div class="hero-stat-div"></div>
+      <div><div class="hero-stat-val">48<sup>hr</sup></div><div class="hero-stat-lbl">Fast Delivery</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="trust">
+  <div class="trust-item"><div class="trust-chk"></div><span>RICS Registered</span></div>
+  <div class="trust-item"><div class="trust-chk"></div><span>50+ Banks Empanelled</span></div>
+  <div class="trust-item"><div class="trust-chk"></div><span>Court Accepted Reports</span></div>
+  <div class="trust-item"><div class="trust-chk"></div><span>PAN India Coverage</span></div>
+  <div class="trust-item"><div class="trust-chk"></div><span>ISO Certified Process</span></div>
+</div>
+
+<div class="services">
+  <div class="sec-head">
+    <div class="eyebrow"><div class="eyebrow-bar"></div><span>What We Value</span></div>
+    <h2 class="sec-title">Comprehensive Valuation<br>Services</h2>
+    <p class="sec-desc">Precise, legally compliant certified reports across all major asset classes across India.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc">
+      <div class="svc-num">01</div>
+      <div class="svc-icon-bg"><svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg></div>
+      <h3>Property Valuation</h3>
+      <p>Residential & commercial properties, flats, villas, and apartment complexes with full legal compliance.</p>
+      <div class="svc-arrow">Learn more </div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">02</div>
+      <div class="svc-icon-bg"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+      <h3>Land Valuation</h3>
+      <p>Agricultural, industrial, and residential plots with title analysis and market rate assessment.</p>
+      <div class="svc-arrow">Learn more </div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">03</div>
+      <div class="svc-icon-bg"><svg viewBox="0 0 24 24"><path d="M22 9V7h-2V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2v-2h-2V9h2zm-4 10H4V5h14v14z"/></svg></div>
+      <h3>Plant & Machinery</h3>
+      <p>Industrial equipment, manufacturing assets, and heavy machinery with depreciation analysis.</p>
+      <div class="svc-arrow">Learn more </div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">04</div>
+      <div class="svc-icon-bg"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg></div>
+      <h3>Insurance Valuation</h3>
+      <p>Reinstatement cost assessments for comprehensive fire, flood, and damage insurance coverage.</p>
+      <div class="svc-arrow">Learn more </div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">05</div>
+      <div class="svc-icon-bg"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+      <h3>Loan & Mortgage</h3>
+      <p>Bank-certified reports for home loans, mortgage financing, and NBFC requirements across India.</p>
+      <div class="svc-arrow">Learn more </div>
+    </div>
+    <div class="svc">
+      <div class="svc-num">06</div>
+      <div class="svc-icon-bg"><svg viewBox="0 0 24 24"><path d="M5 4v3H4c-1.1 0-2 .9-2 2v3c0 1.1.9 2 2 2h1v3c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3h1c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2h-1V4c0-.55-.45-1-1-1H6c-.55 0-1 .45-1 1z"/></svg></div>
+      <h3>Jewellery & Assets</h3>
+      <p>Gold, silver, precious stones, luxury items, and personal asset valuations for legal purposes.</p>
+      <div class="svc-arrow">Learn more </div>
+    </div>
+  </div>
+</div>
+
+<div class="feature">
+  <div class="feature-grid">
+    <div class="feat-visual">
+      <div class="feat-card-main">
+        <h3>Trusted by 50+ leading banks</h3>
+        <p>Our certifications are accepted by HDFC, SBI, ICICI, Axis Bank, and 46 more lenders for all loan and mortgage proceedings.</p>
+      </div>
+      <div class="feat-card-row">
+        <div class="feat-mini"><div class="feat-mini-num">10K+</div><div class="feat-mini-lbl">Reports Issued</div></div>
+        <div class="feat-mini"><div class="feat-mini-num">48hr</div><div class="feat-mini-lbl">Avg Delivery</div></div>
+        <div class="feat-mini"><div class="feat-mini-num">99%</div><div class="feat-mini-lbl">Acceptance Rate</div></div>
+        <div class="feat-mini"><div class="feat-mini-num">15+</div><div class="feat-mini-lbl">Asset Categories</div></div>
+      </div>
+    </div>
+    <div class="feat-content">
+      <div class="feat-badge"><div class="feat-badge-dot"></div><span>Why Choose Us</span></div>
+      <h2 class="sec-title">Built on Trust,<br>Backed by Expertise</h2>
+      <p class="sec-desc">What sets Rao Associates apart from every other valuation firm in India.</p>
+      <div class="feat-list">
+        <div class="feat-item"><div class="feat-check"></div><div class="feat-item-text"><h4>Government Approved</h4><p>Recognized by central & state bodies — reports valid for all legal proceedings and courts.</p></div></div>
+        <div class="feat-item"><div class="feat-check"></div><div class="feat-item-text"><h4>48-Hour Turnaround</h4><p>Fastest certified delivery in the industry without compromising on accuracy or compliance.</p></div></div>
+        <div class="feat-item"><div class="feat-check"></div><div class="feat-item-text"><h4>Court Admissible</h4><p>Legally certified valuation certificates accepted in all civil courts and tribunals.</p></div></div>
+        <div class="feat-item"><div class="feat-check"></div><div class="feat-item-text"><h4>Transparent Pricing</h4><p>No hidden charges — flat fee structure with itemized billing for every report.</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="process">
+  <div class="sec-head" style="text-align:center">
+    <div class="eyebrow" style="justify-content:center"><div class="eyebrow-bar"></div><span>How It Works</span><div class="eyebrow-bar"></div></div>
+    <h2 class="sec-title" style="font-size:34px">Simple 4-Step Process</h2>
+    <p class="sec-desc" style="margin:0 auto;text-align:center">From request to certified report — fast, transparent, reliable.</p>
+  </div>
+  <div class="process-track">
+    <div class="process-line"></div>
+    <div class="pstep"><div class="pstep-circle"><span>01</span></div><h4>Submit Request</h4><p>Share property details online, by call, or WhatsApp — we respond within 2 hours.</p></div>
+    <div class="pstep"><div class="pstep-circle"><span>02</span></div><h4>Site Inspection</h4><p>Our certified valuer visits and inspects your asset on-site at a scheduled time.</p></div>
+    <div class="pstep"><div class="pstep-circle"><span>03</span></div><h4>Analysis & Draft</h4><p>Detailed valuation prepared using current market data and regulatory benchmarks.</p></div>
+    <div class="pstep"><div class="pstep-circle"><span>04</span></div><h4>Certified Report</h4><p>Signed, stamped, and sealed report delivered digitally within 48 hours.</p></div>
+  </div>
+</div>
+
+<div class="testimonials">
+  <div class="sec-head">
+    <div class="eyebrow"><div class="eyebrow-bar"></div><span>Client Feedback</span></div>
+    <h2 class="sec-title">What Our Clients Say</h2>
+    <p class="sec-desc">Trusted by banks, lawyers, and property owners across India.</p>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <p class="test-text">"Rao Associates delivered our property valuation report in under 36 hours. Accepted by our bank on first submission — no revisions needed."</p>
+      <div class="test-author"><div class="test-avatar">RK</div><div><div class="test-name">Rajesh Kumar</div><div class="test-role">Home Loan Applicant, Chennai</div></div></div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <p class="test-text">"We've been using Rao Associates for all our commercial property valuations for 8 years. Reliable, professional, and always court-compliant."</p>
+      <div class="test-author"><div class="test-avatar">SP</div><div><div class="test-name">Sunita Pillai</div><div class="test-role">Legal Counsel, Kochi</div></div></div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+      <p class="test-text">"The plant & machinery valuation for our factory was extremely detailed. The team was knowledgeable and the report helped us secure a significant loan."</p>
+      <div class="test-author"><div class="test-avatar">AM</div><div><div class="test-name">Anand Mehta</div><div class="test-role">Factory Owner, Coimbatore</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-sec">
+  <div class="cta-box">
+    <div class="cta-geo"></div><div class="cta-geo2"></div>
+    <div>
+      <h2>Need a Valuation Report Today?</h2>
+      <p>Speak to our certified experts — get a response within 2 hours.<br>No hidden charges. Transparent pricing. Bank-accepted results.</p>
+    </div>
+    <div class="cta-right">
+      <div class="cta-phone-lbl">Call Us Directly</div>
+      <div class="cta-phone-num">+91 98765 43210</div>
+      <button class="btn-cta">Request Online</button>
+      <button class="btn-cta-ghost">WhatsApp Us</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="f-brand-name">Rao Associates</div>
+      <div class="f-brand-sub">Government Approved Valuers</div>
+      <p class="f-desc">India's most trusted name in certified asset valuation since 1998. Government approved, bank empanelled, PAN India.</p>
+      <div class="f-certs"><div class="f-cert">RICS</div><div class="f-cert">ISO 9001</div><div class="f-cert">Govt. Approved</div><div class="f-cert">IBBI</div></div>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">Services</div>
+      <a href="#">Property Valuation</a>
+      <a href="#">Land Valuation</a>
+      <a href="#">Plant & Machinery</a>
+      <a href="#">Insurance Reports</a>
+      <a href="#">Loan Valuation</a>
+      <a href="#">Jewellery</a>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">Company</div>
+      <a href="#">About Us</a>
+      <a href="#">Our Team</a>
+      <a href="#">Empanelled Banks</a>
+      <a href="#">Case Studies</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+    </div>
+    <div class="f-col">
+      <div class="f-col-title">Contact</div>
+      <div class="f-contact-item">
+        <div class="f-contact-icon"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg></div>
+        <div class="f-contact-text">+91 98765 43210</div>
+      </div>
+      <div class="f-contact-item">
+        <div class="f-contact-icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+        <div class="f-contact-text">info@raovaluers.com</div>
+      </div>
+      <div class="f-contact-item">
+        <div class="f-contact-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+        <div class="f-contact-text">Hyderabad, Bangalore,<br>Chennai, Coimbatore</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="f-copy">© 2026 Rao Associates. All rights reserved.</div>
+    <div class="f-links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Sitemap</a></div>
+  </div>
+</footer>
+
+<script>
+function setTheme(t){
+  document.body.className = t;
+  document.querySelectorAll('.theme-btn').forEach(b=>{
+    b.classList.toggle('active', b.getAttribute('onclick').includes("'"+t+"'"));
+  });
+}
+</script>
